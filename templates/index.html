@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask image get</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#loading').hide();
+            var timer;
+
+            $('#form').submit(function () {
+                $('#loading').show();
+                timer = setInterval(function(){
+                    var timer_sec = Number($('#time').text());
+                    $('#time').text((timer_sec+0.1).toFixed(1));
+                }, 100);
+                return true;
+            });
+        });
+    </script>
+</head>
+<body>    
+    <br>
+    <h1 align="center">Crawl the Image</h1>
+    <br>
+    <form method="POST" action="/crawl" id="form">
+        <div align="center">
+            <h2 align="center">Prompt</h2>
+            <input type="text" id="prompt" name="prompt" >
+        </div>
+    </form>
+    <br>
+    <div id = "loading" align="center">
+        <img src="./static/images/loading.gif" width="100px" height="100px">
+        <div id="time">0.0</div>
+    </div>
+ 
+</body>
+</html>
